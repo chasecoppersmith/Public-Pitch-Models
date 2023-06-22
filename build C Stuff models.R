@@ -41,7 +41,8 @@ mlbraw1 <- mlbraw %>% anti_join(pitchers, by = c("batter"="pitcher")) %>%
            pitch_type %in% c("ST", "SL", "SV") ~ "SL",
            TRUE ~ pitch_type)) 
 
-## Find average delta run values for each ball or strike (pitches not put in play)bs_vals <- mlbraw1 %>% filter(type != "X") %>%  group_by(type) %>% summarize(dre_bs = mean(delta_run_exp, na.rm=T))
+## Find average delta run values for each ball or strike (pitches not put in play)
+bs_vals <- mlbraw1 %>% filter(type != "X") %>%  group_by(type) %>% summarize(dre_bs = mean(delta_run_exp, na.rm=T))
 
 ## same thing but for balls in play
 ip_filt <- mlbraw1 %>% filter(type == 'X')
